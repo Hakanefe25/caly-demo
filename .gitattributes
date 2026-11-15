@@ -1,0 +1,12 @@
+* text=auto
+*.rpy text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.ps1 text eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.wasm binary
+*.data binary
+*.zip binary

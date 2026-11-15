@@ -1,0 +1,29 @@
+# Local credentials, account bindings and environment files
+.env
+.env.*
+!.env.example
+.vercel/
+*.pem
+*.key
+# Generated files and player data
+**/saves/
+**/cache/
+**/backups/
+**/__pycache__/
+*.rpyc
+*.rpyb
+*.pyc
+*.save
+**/persistent
+**/log.txt
+**/traceback.txt
+**/errors.txt
+*.log
+**/dist/
+**/tests/screenshots/
+tools/web-project/
+tools/web-support/
+node_modules/
+public.zip
+.DS_Store
+Thumbs.db
