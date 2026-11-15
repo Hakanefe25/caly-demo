@@ -27,3 +27,8 @@ node_modules/
 public.zip
 .DS_Store
 Thumbs.db
+
+# Deployment outputs are kept outside this source repository
+/vercel-deploy/
+/tools/Build-Web.ps1
+/tools/serve_web.py

@@ -1,26 +1,35 @@
 # caly-demo — Apollo 17
 
-Ana oyundan bağımsız Ren’Py projesi. Sürüm: **0.3-demo**.
+A standalone Ren’Py project. Version: **0.3-demo**.
 
-Yalnızca Ay’daki Apollo 17 bölümü bulunur. Dört keşif: Ay Keşif Aracı, tel örgü tekerlekleri, Challenger’ın iniş kademesi ve Apollo 17 ALSEP istasyonu. Başka gezegenlere geçiş veya başka görevlere ait keşif bulunmaz.
+The demo takes place on the Moon and covers four Apollo 17 discoveries: the Lunar Roving Vehicle, its wire-mesh wheels, Challenger’s descent stage, and the ALSEP station.
 
-Akış: Apollo 17 arşiv fotoğrafıyla açılış → Ay’da Caly ile karşılaşma → işaretli fotoğraflardan serbest keşif → dört hikâyenin tamamlanması → vedalaşma ve Dünya’ya dönüş anlatımı → demo finali. Her hikâyede tam fotoğraf, ayrıntı kesiti ve uygun arşiv görüntüsü kullanılır. Tamamlanan hikâyeler arşivden tekrar dinlenebilir.
+## Story and exploration
 
-0.2 sürümünde konuşmalar yeniden düzenlendi: dört hikâyede toplam 32 karşılıklı konuşma satırı, her keşfe özel ikişer ek soru bulunur. Genel açıklamaların ardından aynı bilgiyi tekrar okuyan eski özet döngüsü kaldırıldı. Okunan ek sorular işaretlenir ve devre dışı kalır; ana hikâye yalnızca “Hikâyeyi yeniden dinle” seçildiğinde yeniden anlatılır. Soruların cevaplarında geçen kaynaklar da keşfin kaynak ekranına eklenir. Açılış ve kapanışta aynı bilgilerin yeniden özetlenmesi kaldırıldı.
+An Apollo 17 archive photograph introduces the landing. After meeting Caly, choose marked regions in the photographs to explore the four stories in any order. Each story uses full photographs, detail crops, and relevant archive imagery. Completing the discoveries leads to a farewell, a narrated return to Earth, and the ending screen.
 
-Demo yeni profilde Türkçe başlar. Ayarlardan İngilizce seçilebilir. Kayıt dizini `caly-demo-apollo17-v1` olduğundan ana oyunun kayıtlarına veya arşivine dokunmaz. Fotoğraftaki tıklanacak bölgeler sürekli işaretlidir. Konuşma ve seçim ekranlarının alt ortasında sade bir hızlı erişim satırı bulunur: Geri, Geçmiş, Atla, Otomatik, Kaydet, Hızlı Kaydet, Hızlı Yükle ve Ayarlar. Kaynakça ve oyun menülerinde bu satır gizlenir.
+The four main stories contain 32 dialogue lines, with two optional follow-up questions per discovery. Answered questions are marked and disabled for the current playthrough. The main story plays again only when you select its replay option. Completed discoveries can be revisited from the archive.
 
-0.1 sürümünden bir kayıt yüklenirse tamamlanan keşifler korunur; eski konuşma döngüsünün ortasında kalınmaması için fotoğraf seçim ekranından devam edilir. Yeni sürümde alınan kayıtlar konuşmanın kaldığı yerden açılır.
+## Language and controls
 
-## Çalıştırma
+A new profile starts in Turkish. Select **English** in Settings to switch languages.
 
-- Kaynak projeyi çalıştırmak için: bu klasörde `powershell -ExecutionPolicy Bypass -File .\Launch.ps1`. SDK yolunu `-Sdk` ile verin veya `RENPY_SDK` ortam değişkenini ayarlayın.
-- Ren’Py Launcher üzerinden de bu klasör proje olarak seçilebilir; `game/` doğrudan bu klasörün altındadır.
+Clickable regions remain marked. A bottom-center quick menu provides Back, History, Skip, Auto, Save, Quick Save, Quick Load, and Preferences. It is hidden while source panels and game menus are open.
 
-## Kaynaklar ve doğrulama
+## Running the source project
 
-Bu demoya ait bilimsel iddia ve görsel eşleştirmeleri `SOURCES.md` içindedir. Yalnızca üç NASA bilim/arşiv görseli paketlenir. Caly’nin iki Ay sahnesi kurgusal AI çizimidir; gerçek iniş alanının birebir görüntüsü değildir. Sağlanan anlatıcı portresi de tarihî fotoğraf değildir.
+Select this directory in the Ren’Py 8.5.3 Launcher; `game/` is directly inside it. On Windows, from this directory:
 
-`tools/check_demo.py` görsel bütünlüğünü, kapsam dışı içeriğin bulunmadığını ve ana oyunun kaynaklarının değişmediğini denetler. `tools/VALIDATION.md` test sonuçlarını içerir. Test kayıtları ve ekran görüntüleri dağıtım paketine dahil edilmez.
+```powershell
+.\Launch.ps1 -Sdk 'C:\path\to\renpy-8.5.3-sdk'
+```
 
-Resmî Ren’Py WebAssembly çıktısı `../vercel-deploy/public` klasöründe hazırlanmıştır. Yeniden derleme, Vercel giriş/yayın komutları ve gerçekleşen/engelli testler için `../vercel-deploy/README.md` dosyasına bakın. Vercel yayını proje sahibi tarafından yapılmıştır; hesap bağlantısı bu depoya dahil değildir.
+You can also set `RENPY_SDK` instead of passing `-Sdk`.
+
+## Saves
+
+The save directory is `caly-demo-apollo17-v1`, separate from the full game. Current saves resume at the saved line. When loading a version 0.1 save, completed discoveries are retained and exploration resumes at the photograph picker to avoid the retired dialogue loop.
+
+## Provenance
+
+[SOURCES.md](SOURCES.md) maps the demo’s scientific claims and photographs to official references. Three NASA archive/scientific images are included. Caly’s two lunar scenes are fictional AI-generated illustrations. The supplied narrator portrait is also fictional character artwork.

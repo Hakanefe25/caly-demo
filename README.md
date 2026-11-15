@@ -1,54 +1,43 @@
 # CALY — Apollo 17 Demo
 
-Ay’da Caly ile karşılaştığın, Apollo 17’den kalan donanımın hikâyelerini keşfettiğin bağımsız bir görsel roman. Ren’Py 8.5.3 ile hazırlanmıştır. Türkçe ve İngilizce destekler.
+A standalone visual novel about meeting Caly on the Moon and discovering the stories behind equipment left by Apollo 17. Built with Ren’Py 8.5.3, with English and Turkish dialogue and interface options.
 
-Dört keşif bulunur: Ay Keşif Aracı, tel örgü tekerlekleri, Challenger’ın iniş kademesi ve ALSEP istasyonu. Fotoğraflardaki işaretlerden istediğin hikâyeye başlayabilir, ek sorular sorabilir ve keşiflerini arşivden yeniden açabilirsin. Demo vedalaşma ve Dünya’ya dönüş anlatımıyla biter.
+Explore marked regions in NASA archive photographs, ask Caly follow-up questions, and revisit discoveries through the archive. The demo covers four subjects:
 
-## Klasörler
+- The Lunar Roving Vehicle
+- Its wire-mesh wheels
+- Challenger’s descent stage
+- The Apollo 17 ALSEP station
 
-| Yol | İçerik |
-| --- | --- |
-| `caly-demo/game/` | Ren’Py kaynak kodu, Türkçe/İngilizce metinler ve oyun görselleri |
-| `caly-demo/SOURCES.md` | Bilimsel iddialar ve görseller için resmî kaynak eşleştirmeleri |
-| `vercel-deploy/public/` | Hazır Ren’Py WebAssembly web dağıtımı |
-| `vercel-deploy/vercel.json` | Vercel statik yayın ayarları |
-| `tools/Build-Web.ps1` | Kaynaklardan web dağıtımını yeniden üretme |
-| `tools/serve_web.py` | Yerel HTTP önizlemesi |
+The visit ends with a farewell and a narrated return to Earth. Caly and the visit are fictional; historical information is mapped to official NASA sources.
 
-## Yerel oyun
+## Run the demo
 
-[Ren’Py 8.5.3 SDK](https://www.renpy.org/release/8.5.3) içinden `caly-demo` klasörünü proje olarak açıp çalıştırın. Windows PowerShell alternatifi:
+Download the [Ren’Py 8.5.3 SDK](https://www.renpy.org/release/8.5.3), select `caly-demo` as a project in the Ren’Py Launcher, and launch it. On Windows, you can also run:
 
 ```powershell
 .\caly-demo\Launch.ps1 -Sdk 'C:\path\to\renpy-8.5.3-sdk'
 ```
 
-SDK bu depoya dahil değildir. Yerel kayıtlar ve önbellekler Git’e alınmaz.
+Alternatively, set `RENPY_SDK` to your SDK directory. A fresh player profile starts in Turkish; select **English** in Settings to switch languages.
 
-## Web ve Vercel
+## Repository contents
 
-Hazır web dosyaları `vercel-deploy/public/` içindedir. Vercel projesinin kök dizinini **vercel-deploy**, framework ayarını **Other**, çıktı dizinini **public** seçin. Derleme komutu gerekmez. GitHub’dan içe aktarma veya CLI ile yayınlama adımları [web notlarında](vercel-deploy/README.md) bulunur.
+| Path | Contents |
+| --- | --- |
+| `caly-demo/game/` | Ren’Py scripts, English/Turkish dialogue, interface assets, and images |
+| `caly-demo/Launch.ps1` | Windows launcher for an installed Ren’Py SDK |
+| `caly-demo/README.md` | Demo flow, controls, and save behavior |
+| [SOURCES.md](SOURCES.md) | Official references, claim mapping, image credits, hashes, and verification limits |
 
-Yerelde dosyaları `file://` ile açmayın; HTTP sunucusu kullanın:
+The repository contains the source project. Generated web deployments, the SDK, player saves, and local account settings are excluded.
 
-```powershell
-python .\tools\serve_web.py
-```
+## Sources and artwork
 
-Ardından `http://127.0.0.1:8042/` adresini açın. Python yoksa herhangi bir statik HTTP sunucusu da kullanılabilir.
+Historical photographs and scientific information use NASA sources. Each discovery includes links to its references. Caly’s lunar scenes are AI-generated fictional illustrations, rather than photographs of the historical landing site. Asset provenance and unresolved attribution details are documented in [SOURCES.md](SOURCES.md).
 
-Yeniden derlemek için aynı SDK’nın resmî Web desteğini kurun:
+No blanket reuse license is granted for the included images. The engine and third-party components retain their respective licenses.
 
-```powershell
-.\tools\Build-Web.ps1 -Sdk 'C:\path\to\renpy-8.5.3-sdk'
-```
+## Validation
 
-## Kaynaklar ve görseller
-
-Tarihî fotoğraflar ve bilimsel bilgiler NASA kaynaklarına dayanır. Her keşfin oyun içi kaynak bağlantıları bulunur; resmî URL’ler, görsel kredileri, dosya hash’leri ve doğrulanamayan ayrıntılar [SOURCES.md](SOURCES.md) içinde tutulur. Caly ve ziyaret hikâyesi kurgudur. Caly’nin Ay sahneleri yapay zekâyla üretilmiş kurgusal çizimlerdir; tarihî görev fotoğrafı değildir.
-
-Depodaki görseller için toplu bir yeniden kullanım lisansı verilmez. Her varlığın kökeni ve bilinen hak bilgileri kaynak kaydında açıklanır. Oyun motoru ve üçüncü taraf bileşenleri kendi lisanslarına tabidir.
-
-## Doğrulama durumu
-
-Yerel Ren’Py Apollo 17 gezi testi 25/25 kontrolü geçti: dört hikâye, sekiz ek soru, hızlı kayıt/yükleme, arşiv, yeniden anlatım ve final. Web çıktısı özgün oyun kaynakları ve görsellerinden üretilmiştir. Bu sonuçlar tüm tarayıcıların veya mobil cihazların test edildiği anlamına gelmez. Kaynak sürümün bilinen kullanım ayrıntıları `caly-demo/README.md` içinde açıklanır.
+The native Apollo 17 journey test passed 25 assertions covering all four stories, eight follow-up questions, quick save/load, the archive, story replay, and the ending. Test definitions are in `caly-demo/game/testcases.rpy`. These results do not establish compatibility with every browser or mobile device.
